@@ -1,0 +1,49 @@
+{
+  "_doc": "medica shared core (additive base; no removals).",
+  "insurance": "medica",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "Medica Gender Affirmation Procedures (also MCG criteria)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "gender_dysphoria_marked_and_sustained",
+      "type": "boolean",
+      "value": true,
+      "label": "Marked and sustained gender incongruence"
+    },
+    {
+      "field": "clinician_experience_in_gender_dysphoria",
+      "type": "exists",
+      "value": true,
+      "label": "Clinician experienced in TGD care"
+    },
+    {
+      "field": "capacity_for_informed_decision",
+      "type": "boolean",
+      "value": true,
+      "label": "Able to grant informed consent"
+    },
+    {
+      "field": "understands_risks",
+      "type": "boolean",
+      "value": true,
+      "label": "Understands risks, complications, irreversibility"
+    },
+    {
+      "field": "comorbid_conditions_assessed",
+      "type": "boolean",
+      "value": true,
+      "label": "No illness interfering with postoperative adherence"
+    },
+    {
+      "field": "social_transition_or_unnecessary",
+      "type": "boolean",
+      "value": true,
+      "label": "Social transition in place or judged unnecessary"
+    }
+  ]
+}

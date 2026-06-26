@@ -1,0 +1,27 @@
+{
+  "insurance": "aetna",
+  "surgery": "breast_aug",
+  "age_group": "adult",
+  "remove": [
+    "breast_cancer_risk_assessed"
+  ],
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "Aetna Gender Affirming Surgery (next review 2026-07-09)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "hormone_duration_months",
+      "type": "min",
+      "value": 6,
+      "label": "6 months feminizing hormones before breast aug",
+      "waived_if": [
+        "hormones_not_desired_or_contraindicated"
+      ]
+    }
+  ],
+  "extends": "_base.json"
+}

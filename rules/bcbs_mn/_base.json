@@ -1,0 +1,79 @@
+{
+  "_doc": "bcbs_mn shared core (additive base; no removals).",
+  "insurance": "bcbs_mn",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "Blue Cross Blue Shield of MN Medpolicy (policy update 2025-10-06)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "comprehensive_assessment_completed",
+      "type": "boolean",
+      "value": true,
+      "label": "Completed comprehensive diagnostic assessment"
+    },
+    {
+      "field": "clinician_experience_in_gender_dysphoria",
+      "type": "exists",
+      "value": true,
+      "label": "Experienced in assessment/treatment of GD"
+    },
+    {
+      "field": "clinician_interdisciplinary_engagement",
+      "type": "boolean",
+      "value": true,
+      "label": "Engages with other disciplines for consult/referral"
+    },
+    {
+      "field": "clinical_relationship_duration_described",
+      "type": "exists",
+      "value": true,
+      "label": "Duration of relationship + evaluation/therapy type"
+    },
+    {
+      "field": "gender_identifying_characteristics_described",
+      "type": "exists",
+      "value": true,
+      "label": "Member's gender identifying characteristics"
+    },
+    {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Assessment results including all diagnoses"
+    },
+    {
+      "field": "comorbid_conditions_assessed",
+      "type": "boolean",
+      "value": true,
+      "label": "Conditions affecting clarity/consent evaluated and addressed"
+    },
+    {
+      "field": "clinical_rationale_for_surgery",
+      "type": "boolean",
+      "value": true,
+      "label": "Criteria met + clinical rationale described"
+    },
+    {
+      "field": "emotional_cognitive_maturity_for_consent",
+      "type": "boolean",
+      "value": true,
+      "label": "Emotional/cognitive maturity for informed consent"
+    },
+    {
+      "field": "irreversibility_acknowledged",
+      "type": "boolean",
+      "value": true,
+      "label": "Informed surgery is irreversible / reversal not covered"
+    },
+    {
+      "field": "nicotine_free_or_abstained",
+      "type": "boolean",
+      "value": true,
+      "label": "Never-smoker or abstained 6 weeks pre-surgery"
+    }
+  ]
+}

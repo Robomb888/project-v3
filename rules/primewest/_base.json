@@ -1,0 +1,79 @@
+{
+  "_doc": "primewest shared core (additive base; no removals).",
+  "insurance": "primewest",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "PrimeWest Physician Professional Covered Services",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "gender_identifying_characteristics_described",
+      "type": "exists",
+      "value": true,
+      "label": "General identifying characteristics"
+    },
+    {
+      "field": "clinical_relationship_duration_described",
+      "type": "exists",
+      "value": true,
+      "label": "Duration of relationship + evaluation/therapy"
+    },
+    {
+      "field": "clinical_rationale_for_surgery",
+      "type": "boolean",
+      "value": true,
+      "label": "Criteria met + clinical rationale"
+    },
+    {
+      "field": "informed_consent_obtained",
+      "type": "boolean",
+      "value": true,
+      "label": "Clinician obtained informed consent"
+    },
+    {
+      "field": "clinician_available_for_coordination",
+      "type": "boolean",
+      "value": true,
+      "label": "Provider available for coordination of care"
+    },
+    {
+      "field": "diagnosed_gender_dysphoria",
+      "type": "boolean",
+      "value": true,
+      "label": "Affirmation of GD diagnosis"
+    },
+    {
+      "field": "significant_concerns_well_controlled",
+      "type": "boolean",
+      "value": true,
+      "label": "Significant concerns reasonably well controlled"
+    },
+    {
+      "field": "no_medical_contraindications",
+      "type": "boolean",
+      "value": true,
+      "label": "No medical contraindications for surgery"
+    },
+    {
+      "field": "months_living_as_identified_gender",
+      "type": "min",
+      "value": 12,
+      "label": "Lived in gender role >=12 continuous months"
+    },
+    {
+      "field": "diagnostic_assessment_included",
+      "type": "boolean",
+      "value": true,
+      "label": "Recent DA or psychosocial assessment"
+    },
+    {
+      "field": "clinician_experience_in_gender_dysphoria",
+      "type": "exists",
+      "value": true,
+      "label": "Expertise in transgender health"
+    }
+  ]
+}

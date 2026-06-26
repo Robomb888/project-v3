@@ -1,0 +1,67 @@
+{
+  "_doc": "mhcp_medicaid shared core (additive base; no removals).",
+  "insurance": "mhcp_medicaid",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "MN Health Care Programs - Gender-Confirming Surgery (state.mn.us)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "diagnostic_assessment_included",
+      "type": "boolean",
+      "value": true,
+      "label": "Recent DA included if behavioral-health provider"
+    },
+    {
+      "field": "diagnosed_gender_dysphoria",
+      "type": "boolean",
+      "value": true,
+      "label": "Meets diagnostic criteria; GD diagnosis affirmed"
+    },
+    {
+      "field": "gender_dysphoria_marked_and_sustained",
+      "type": "boolean",
+      "value": true,
+      "label": "Marked and sustained over time"
+    },
+    {
+      "field": "emotional_cognitive_maturity_for_consent",
+      "type": "boolean",
+      "value": true,
+      "label": "Maturity for informed consent/approval"
+    },
+    {
+      "field": "clinical_relationship_duration_described",
+      "type": "exists",
+      "value": true,
+      "label": "Duration of relationship + evaluation/therapy"
+    },
+    {
+      "field": "clinical_rationale_for_surgery",
+      "type": "boolean",
+      "value": true,
+      "label": "Criteria met + clinical rationale"
+    },
+    {
+      "field": "informed_consent_obtained",
+      "type": "boolean",
+      "value": true,
+      "label": "Clinician obtained informed consent"
+    },
+    {
+      "field": "clinician_available_for_coordination",
+      "type": "boolean",
+      "value": true,
+      "label": "Provider available for coordination of care"
+    },
+    {
+      "field": "significant_concerns_well_controlled",
+      "type": "boolean",
+      "value": true,
+      "label": "Significant concerns reasonably well controlled"
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "age": {
+    "type": "min",
+    "extractor": "extractors.age",
+    "description": "Patient age in years"
+  },
+  "surgery_type": {
+    "type": "exists",
+    "extractor": "extractors.surgery_type",
+    "description": "Requested surgery category"
+  },
+  "hormone_duration_months": {
+    "type": "min",
+    "extractor": "extractors.hormone_duration_months",
+    "description": "Months of continuous gender-affirming hormone therapy"
+  },
+  "months_living_as_identified_gender": {
+    "type": "min",
+    "extractor": "extractors.months_living_as_identified_gender",
+    "description": "Months living full-time in the identified gender / real-life experience"
+  },
+  "capacity_for_informed_decision": {
+    "type": "boolean",
+    "extractor": "extractors.capacity_for_informed_decision",
+    "description": "Capacity to give informed consent"
+  },
+  "diagnosed_gender_dysphoria": {
+    "type": "boolean",
+    "extractor": "extractors.diagnosed_gender_dysphoria",
+    "description": "Documented diagnosis of gender dysphoria/incongruence"
+  },
+  "understands_risks": {
+    "type": "boolean",
+    "extractor": "extractors.understands_risks",
+    "description": "Understands risks, benefits, alternatives, irreversibility"
+  },
+  "favorable_psychosocial_behavioral_eval": {
+    "type": "boolean",
+    "extractor": "extractors.favorable_psychosocial_behavioral_eval",
+    "description": "Favorable psychosocial/behavioral evaluation"
+  },
+  "clinician_masters_degree_or_above": {
+    "type": "boolean",
+    "extractor": "extractors.clinician_masters_degree_or_above",
+    "description": "Clinician holds a master's degree or higher"
+  },
+  "clinician_credentials_from_licensing_board": {
+    "type": "exists",
+    "extractor": "extractors.clinician_credentials_from_licensing_board",
+    "description": "Clinician licensing-board credentials"
+  },
+  "clinician_experience_in_gender_dysphoria": {
+    "type": "exists",
+    "extractor": "extractors.clinician_experience_in_gender_dysphoria",
+    "description": "Clinician experience/training in gender dysphoria"
+  },
+  "plan_for_follow_up": {
+    "type": "boolean",
+    "extractor": "extractors.plan_for_follow_up",
+    "description": "Plan for ongoing follow-up / coordination of care"
+  },
+  "parental_or_guardian_consent": {
+    "type": "boolean",
+    "extractor": "extractors.parental_or_guardian_consent",
+    "description": "MINOR: parent/guardian consent / involvement documented"
+  },
+  "multidisciplinary_team_involved": {
+    "type": "boolean",
+    "extractor": "extractors.multidisciplinary_team_involved",
+    "description": "Multidisciplinary team assessment/involvement"
+  },
+  "second_independent_clinician_letter": {
+    "type": "exists",
+    "extractor": "extractors.second_independent_clinician_letter",
+    "description": "A second independent clinician letter/assessment present"
+  },
+  "support_letter_count": {
+    "type": "min",
+    "extractor": null,
+    "description": "Number of qualifying support letters required (packet-level)"
+  },
+  "gender_dysphoria_marked_and_sustained": {
+    "type": "boolean",
+    "extractor": "extractors.gender_dysphoria_marked_and_sustained",
+    "description": "Gender dysphoria/incongruence documented as marked and sustained"
+  },
+  "other_causes_excluded": {
+    "type": "boolean",
+    "extractor": "extractors.other_causes_excluded",
+    "description": "Other possible causes of gender incongruence identified and excluded"
+  },
+  "comorbid_conditions_assessed": {
+    "type": "boolean",
+    "extractor": "extractors.comorbid_conditions_assessed",
+    "description": "Mental/physical conditions affecting outcome assessed and addressed"
+  },
+  "significant_concerns_well_controlled": {
+    "type": "boolean",
+    "extractor": "extractors.significant_concerns_well_controlled",
+    "description": "Significant medical/mental health concerns reasonably well controlled"
+  },
+  "understands_reproductive_effects": {
+    "type": "boolean",
+    "extractor": "extractors.understands_reproductive_effects",
+    "description": "Understands effect on reproduction; explored fertility options"
+  },
+  "informed_consent_obtained": {
+    "type": "boolean",
+    "extractor": "extractors.informed_consent_obtained",
+    "description": "Statement that clinician obtained informed consent"
+  },
+  "clinician_available_for_coordination": {
+    "type": "boolean",
+    "extractor": "extractors.clinician_available_for_coordination",
+    "description": "Statement that provider is available for coordination of care"
+  },
+  "emotional_cognitive_maturity_for_consent": {
+    "type": "boolean",
+    "extractor": "extractors.emotional_cognitive_maturity_for_consent",
+    "description": "Demonstrates emotional/cognitive maturity for informed consent/assent"
+  },
+  "diagnostic_assessment_included": {
+    "type": "boolean",
+    "extractor": "extractors.diagnostic_assessment_included",
+    "description": "Recent diagnostic assessment (DA) included (esp. Medicaid)"
+  },
+  "clinical_relationship_duration_described": {
+    "type": "exists",
+    "extractor": "extractors.clinical_relationship_duration_described",
+    "description": "Duration of provider relationship + type of evaluation/therapy described"
+  },
+  "gender_identifying_characteristics_described": {
+    "type": "exists",
+    "extractor": "extractors.gender_identifying_characteristics_described",
+    "description": "Member's gender identifying characteristics described"
+  },
+  "assessment_results_with_diagnoses": {
+    "type": "exists",
+    "extractor": "extractors.assessment_results_with_diagnoses",
+    "description": "Assessment results including all diagnoses described"
+  },
+  "clinical_rationale_for_surgery": {
+    "type": "boolean",
+    "extractor": "extractors.clinical_rationale_for_surgery",
+    "description": "Explanation that criteria met + clinical rationale for surgery"
+  },
+  "irreversibility_acknowledged": {
+    "type": "boolean",
+    "extractor": "extractors.irreversibility_acknowledged",
+    "description": "Statement acknowledging surgery is irreversible / reversal not covered"
+  },
+  "nicotine_free_or_abstained": {
+    "type": "boolean",
+    "extractor": "extractors.nicotine_free_or_abstained",
+    "description": "Never-smoker or abstained from nicotine for the required period"
+  },
+  "clinician_interdisciplinary_engagement": {
+    "type": "boolean",
+    "extractor": "extractors.clinician_interdisciplinary_engagement",
+    "description": "Clinician engages with other disciplines for consultation/referral"
+  },
+  "clinician_part_of_gender_team": {
+    "type": "boolean",
+    "extractor": "extractors.clinician_part_of_gender_team",
+    "description": "Whether clinician is part of a gender team"
+  },
+  "psychotherapy_duration_months": {
+    "type": "min",
+    "extractor": "extractors.psychotherapy_duration_months",
+    "description": "Months of psychotherapy (e.g., Medicare 12-month requirement)"
+  },
+  "letter_on_official_letterhead": {
+    "type": "boolean",
+    "extractor": null,
+    "description": "Letter is on official practice letterhead"
+  },
+  "letter_signed": {
+    "type": "boolean",
+    "extractor": null,
+    "description": "Letter is signed by the clinician"
+  },
+  "unequivocal_support_for_procedure": {
+    "type": "boolean",
+    "extractor": "extractors.unequivocal_support_for_procedure",
+    "description": "Clinician gives unequivocal support for the procedure"
+  },
+  "medical_management_compliance": {
+    "type": "boolean",
+    "extractor": "extractors.medical_management_compliance",
+    "description": "Followed recommended medical management; likely continued compliance"
+  },
+  "breast_cancer_risk_assessed": {
+    "type": "boolean",
+    "extractor": "extractors.breast_cancer_risk_assessed",
+    "description": "Breast cancer risk factors assessed"
+  },
+  "no_medical_contraindications": {
+    "type": "boolean",
+    "extractor": "extractors.no_medical_contraindications",
+    "description": "No medical contraindications for surgery"
+  },
+  "social_transition_or_unnecessary": {
+    "type": "boolean",
+    "extractor": "extractors.social_transition_or_unnecessary",
+    "description": "Social transition in place or judged unnecessary by clinician"
+  },
+  "behavioral_health_remission_months": {
+    "type": "min",
+    "extractor": "extractors.behavioral_health_remission_months",
+    "description": "Months of stable remission of comorbid behavioral-health conditions"
+  },
+  "meets_recognized_clinical_criteria": {
+    "type": "boolean",
+    "extractor": "extractors.meets_recognized_clinical_criteria",
+    "description": "Meets recognized clinical criteria (e.g., WPATH)"
+  },
+  "provider_signature_and_contact_info": {
+    "type": "boolean",
+    "extractor": null,
+    "description": "Provider signature, licensure, date, and contact info present"
+  },
+  "clinician_qualified_competencies": {
+    "type": "boolean",
+    "extractor": "extractors.clinician_qualified_competencies",
+    "description": "Clinician has competencies in assessing transgender/gender-diverse people"
+  },
+  "appropriate_hormone_use": {
+    "type": "boolean",
+    "extractor": "extractors.appropriate_hormone_use",
+    "description": "Appropriate use of hormone therapy"
+  },
+  "comprehensive_assessment_completed": {
+    "type": "boolean",
+    "extractor": "extractors.comprehensive_assessment_completed",
+    "description": "Completed a comprehensive diagnostic assessment"
+  },
+  "hormones_not_desired_or_contraindicated": {
+    "type": "boolean",
+    "extractor": "extractors.hormones_not_desired_or_contraindicated",
+    "description": "Hormones not desired or medically contraindicated (waives hormone-duration requirement)"
+  }
+}

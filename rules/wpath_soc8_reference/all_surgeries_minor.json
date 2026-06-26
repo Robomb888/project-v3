@@ -1,0 +1,59 @@
+{
+  "insurance": "wpath_soc8_reference",
+  "surgery": "all",
+  "age_group": "minor",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "WPATH Standards of Care v8 (reference for unlisted plans)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "multidisciplinary_team_involved",
+      "type": "boolean",
+      "value": true,
+      "label": "Comprehensive biopsychosocial MDT assessment"
+    },
+    {
+      "field": "parental_or_guardian_consent",
+      "type": "boolean",
+      "value": true,
+      "label": "Parent/guardian involvement unless harmful/infeasible"
+    },
+    {
+      "field": "gender_dysphoria_marked_and_sustained",
+      "type": "boolean",
+      "value": true,
+      "label": "Marked and sustained over time"
+    },
+    {
+      "field": "emotional_cognitive_maturity_for_consent",
+      "type": "boolean",
+      "value": true,
+      "label": "Maturity for informed consent/assent"
+    },
+    {
+      "field": "understands_reproductive_effects",
+      "type": "boolean",
+      "value": true,
+      "label": "Informed of reproductive effects"
+    },
+    {
+      "field": "hormone_duration_months",
+      "type": "min",
+      "value": 12,
+      "label": "At least 12 months GAHT for listed procedures",
+      "waived_if": [
+        "hormones_not_desired_or_contraindicated"
+      ]
+    },
+    {
+      "field": "provider_signature_and_contact_info",
+      "type": "boolean",
+      "value": true,
+      "label": "Provider signature, licensure, date, contact"
+    }
+  ]
+}

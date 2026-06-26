@@ -1,0 +1,27 @@
+{
+  "insurance": "uhc",
+  "surgery": "breast_aug",
+  "age_group": "adult",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "UnitedHealthcare Gender Dysphoria Treatment - Commercial (effective 2026-01-01)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "age",
+      "type": "min",
+      "value": 18,
+      "label": "Breast augmentation 18+"
+    },
+    {
+      "field": "hormone_duration_months",
+      "type": "min",
+      "value": 12,
+      "label": "12 months continuous hormones before breast procedure"
+    }
+  ],
+  "extends": "_base.json"
+}

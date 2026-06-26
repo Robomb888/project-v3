@@ -1,0 +1,21 @@
+{
+  "insurance": "bcbs_mn",
+  "surgery": "bottom",
+  "age_group": "adult",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "Blue Cross Blue Shield of MN Medpolicy (policy update 2025-10-06)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "months_living_as_identified_gender",
+      "type": "min",
+      "value": 6,
+      "label": "6 continuous months living in identity"
+    }
+  ],
+  "extends": "_base.json"
+}

@@ -1,0 +1,45 @@
+{
+  "insurance": "cigna",
+  "surgery": "mastectomy",
+  "age_group": "minor",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "Cigna Gender Dysphoria Treatment (next review 2027-01-15)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "age",
+      "type": "min",
+      "value": 15,
+      "label": "Mastectomy 15-17 case-by-case"
+    },
+    {
+      "field": "parental_or_guardian_consent",
+      "type": "boolean",
+      "value": true,
+      "label": "Parental/guardian consent when applicable"
+    },
+    {
+      "field": "gender_dysphoria_marked_and_sustained",
+      "type": "boolean",
+      "value": true,
+      "label": "GD marked and sustained (~2 years)"
+    },
+    {
+      "field": "comorbid_conditions_assessed",
+      "type": "boolean",
+      "value": true,
+      "label": "Each evaluation addresses comorbidities"
+    },
+    {
+      "field": "emotional_cognitive_maturity_for_consent",
+      "type": "boolean",
+      "value": true,
+      "label": "Emotional/cognitive maturity documented"
+    }
+  ],
+  "extends": "_base.json"
+}

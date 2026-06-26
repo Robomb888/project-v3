@@ -1,0 +1,27 @@
+{
+  "insurance": "mhcp_medicaid",
+  "surgery": "all",
+  "age_group": "minor",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "MN Health Care Programs - Gender-Confirming Surgery (state.mn.us)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "multidisciplinary_team_involved",
+      "type": "boolean",
+      "value": true,
+      "label": "Medical + mental health assessment"
+    },
+    {
+      "field": "parental_or_guardian_consent",
+      "type": "boolean",
+      "value": true,
+      "label": "Guardian involvement"
+    }
+  ],
+  "extends": "_base.json"
+}

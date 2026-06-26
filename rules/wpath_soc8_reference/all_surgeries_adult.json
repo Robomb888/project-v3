@@ -1,0 +1,62 @@
+{
+  "insurance": "wpath_soc8_reference",
+  "surgery": "all",
+  "age_group": "adult",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "WPATH Standards of Care v8 (reference for unlisted plans)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "clinician_qualified_competencies",
+      "type": "boolean",
+      "value": true,
+      "label": "Competencies in assessing TGD people"
+    },
+    {
+      "field": "gender_dysphoria_marked_and_sustained",
+      "type": "boolean",
+      "value": true,
+      "label": "Gender incongruence marked and sustained"
+    },
+    {
+      "field": "diagnosed_gender_dysphoria",
+      "type": "boolean",
+      "value": true,
+      "label": "Meets diagnostic criteria where required"
+    },
+    {
+      "field": "capacity_for_informed_decision",
+      "type": "boolean",
+      "value": true,
+      "label": "Capacity to consent"
+    },
+    {
+      "field": "understands_reproductive_effects",
+      "type": "boolean",
+      "value": true,
+      "label": "Understands reproductive effects; explored options"
+    },
+    {
+      "field": "other_causes_excluded",
+      "type": "boolean",
+      "value": true,
+      "label": "Other causes identified and excluded"
+    },
+    {
+      "field": "comorbid_conditions_assessed",
+      "type": "boolean",
+      "value": true,
+      "label": "Conditions affecting outcome assessed; risks discussed"
+    },
+    {
+      "field": "provider_signature_and_contact_info",
+      "type": "boolean",
+      "value": true,
+      "label": "Provider signature, licensure, date, contact"
+    }
+  ]
+}

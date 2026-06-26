@@ -1,0 +1,67 @@
+{
+  "_doc": "cigna shared core (additive base; no removals).",
+  "insurance": "cigna",
+  "provenance": {
+    "source": "M Health Fairview CGC, Letter of Support Checklists (last updated 2026-03-09)",
+    "policy": "Cigna Gender Dysphoria Treatment (next review 2027-01-15)",
+    "caveat": "General requirements that may change; verify against the member's specific plan. Items absent from the letter may be satisfied elsewhere (clinical notes, DA) -- do not auto-fail; route to human review.",
+    "mapped_on": "2026-06-07",
+    "verify_before_use": true
+  },
+  "requirements": [
+    {
+      "field": "diagnosed_gender_dysphoria",
+      "type": "boolean",
+      "value": true,
+      "label": "Confirmed gender dysphoria"
+    },
+    {
+      "field": "capacity_for_informed_decision",
+      "type": "boolean",
+      "value": true,
+      "label": "Capacity to make a fully informed decision"
+    },
+    {
+      "field": "significant_concerns_well_controlled",
+      "type": "boolean",
+      "value": true,
+      "label": "Other significant concerns well-controlled"
+    },
+    {
+      "field": "gender_identifying_characteristics_described",
+      "type": "exists",
+      "value": true,
+      "label": "General identifying characteristics"
+    },
+    {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Initial and evolving gender/sexual/psychiatric diagnoses"
+    },
+    {
+      "field": "clinical_relationship_duration_described",
+      "type": "exists",
+      "value": true,
+      "label": "Type and duration of psychotherapy/evaluation"
+    },
+    {
+      "field": "clinical_rationale_for_surgery",
+      "type": "boolean",
+      "value": true,
+      "label": "Rationale for hormone therapy or surgery"
+    },
+    {
+      "field": "medical_management_compliance",
+      "type": "boolean",
+      "value": true,
+      "label": "Followed management; likely continued compliance"
+    },
+    {
+      "field": "clinician_part_of_gender_team",
+      "type": "boolean",
+      "value": true,
+      "label": "Whether clinician is part of a gender team"
+    }
+  ]
+}
