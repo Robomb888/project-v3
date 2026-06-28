@@ -25,6 +25,9 @@ import extractors as ex
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 log = logging.getLogger(__name__)
 logging.getLogger("httpx").setLevel(logging.WARNING)
+Path("results").mkdir(exist_ok=True)
+Path("samples").mkdir(exist_ok=True)
+Path("cache").mkdir(exist_ok=True)
 
 BASE = Path(__file__).resolve().parent
 SAMPLES_DIR = BASE / "samples"
