@@ -1,0 +1,10 @@
+fitz==0.0.1.dev2
+numpy==2.5.0
+ollama==0.6.2
+opencv_contrib_python==4.10.0.84
+opencv_python==4.13.0.92
+opencv_python_headless==4.13.0.92
+Pillow==12.2.0
+pytesseract==0.3.13
+python_dateutil==2.9.0.post0
+reportlab==5.0.0
