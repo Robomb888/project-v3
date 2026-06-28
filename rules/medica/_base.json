@@ -34,10 +34,10 @@
       "label": "Understands risks, complications, irreversibility"
     },
     {
-      "field": "comorbid_conditions_assessed",
+      "field": "significant_concerns_well_controlled",
       "type": "exists",
       "value": true,
-      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
+      "label": "Other significant concerns well-controlled"
     },
     {
       "field": "assessment_results_with_diagnoses",

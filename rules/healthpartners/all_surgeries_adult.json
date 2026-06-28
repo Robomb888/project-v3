@@ -23,10 +23,10 @@
       "label": "Other causes identified and excluded"
     },
     {
-      "field": "comorbid_conditions_assessed",
+      "field": "significant_concerns_well_controlled",
       "type": "exists",
       "value": true,
-      "label": "Mental and physical health conditions that could negatively impact the outcome have been assessed/addressed"
+      "label": "Other significant concerns well-controlled"
     },
     {
       "field": "assessment_results_with_diagnoses",
