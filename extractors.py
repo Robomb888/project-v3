@@ -69,6 +69,7 @@ def _extract_dob(text):
     patterns = [
         r'(?:date of birth|dob)\s*[:\-]?\s*([0-9]{1,2}[/-][0-9]{1,2}[/-][0-9]{2,4})',
         r'(?:date of birth|dob)\s*[:\-]?\s*([A-Za-z]+\s+\d{1,2},?\s+\d{4})',
+        r'([A-Za-z]+\s+\d{1,2},?\s+\d{4}).*(?:date of birth|dob)'
     ]
     for pattern in patterns:
         match = re.search(pattern, text, re.IGNORECASE)
@@ -148,10 +149,10 @@ _SIGNOFF = ["sincerely", "regards", "respectfully",
 # Degrees as bounded tokens (optional periods/spaces) so a sign-off's "Dr." cannot
 # hide them and substrings inside words (e.g. "do" in "doctor") do not false match.
 _DEGREE_RE = re.compile(
-    r"\b(ph\.?\s?d|psy\.?\s?d|m\.?\s?s\.?\s?w|m\.?\s?s\.?\s?n|pmhnp|ed\.?\s?d|"
+    r"\b(ph\.?\s?d|dnp|psy\.?\s?d|m\.?\s?s\.?\s?w|m\.?\s?s\.?\s?n|ed\.?\s?d|"
     r"d\.?\s?w\.?\s?m|m\.?\s?d|m\.?\s?a|m\.?\s?ed|m\.?\s?s|d\.?\s?o)", re.I)
 _LIC_RE = re.compile(
-    r"(l\.?p|lc?pc|li?csw|lgsw|lmft|lmsw|lc?mhc|cmhc|lpc?c)\b", re.I)
+    r"(l\.?p|lc?pc|li?csw|lgsw|lmft|lmsw|lc?mhc|cmhc|lpc?c|pmhnp)\b", re.I)
  
  
 def clinician_masters_degree_or_above(text):       # was clinician.extract
@@ -252,10 +253,10 @@ def hormone_duration_months(text):
 
 # months_living_as_identified_gender original
 
-_LIV_ANCHOR = (r"(?:liv(?:ing|ed)(?:\s+full[-\s]?time)?\s+(?:as|in)|"
+_LIV_ANCHOR = (r"(?:liv(?:ing|ed)(?:\s+(?:(?:full[-\s]?time)|exclusively))?\s+(?:as|in)|"
                r"full[-\s]?time\s+(?:as|in)|social(?:ly)?\s+transition\w*|transition\w*|"
                r"real[-\s]?life\s+experience|presenting\s+as|gender\s+role)")
-_LIV_CUE = (r"(?:for|over|during|of)\s+"
+_LIV_CUE = (r"(?:for|over|during|for\sover|of)\s+"
             r"(?:the\s+|past\s+|over\s+|about\s+|approximately\s+|nearly\s+|almost\s+|"
             r"more\s+than\s+|at\s+least\s+)*")
 _LIV_NEAR = _LIV_ANCHOR + r"[^.\n]{0,30}?" + _LIV_CUE
@@ -338,8 +339,8 @@ def comorbid_conditions_assessed(text):
 
 def significant_concerns_well_controlled(text):
     return _find_all(text, [re.compile(p, re.I) for p in (
-        r"\b(mental\s+health|psychiatric|behavioral|medical\s+condition|comorbid\w*|concern|condition|depress\w*|anxiety|mood|disorder|illness|symptom|co-?occurring|co-?existing|other\s+condition)\b",
-        r"\b(procedure|surgery|operation|treatment|intervention|goals?)|((affect(s|ed|ing)?|impact(s|ed|ing)?|interfere(s|d|ing)?(\s+with)?|prevent(s|ed|ing)?|compromise(s|d|ing))|assess\w*|evaluat\w*|address\w*|review\w*|consider\w*|screen\w*|well[\s-]?controlled|reasonably\s+(well\s+)?controlled|stable|in\s+(stable\s+)?remission|managed|adequately\s+(managed|controlled))\b")],
+        r"\b(mental\s+health|psychiatric|diagnoses|behavioral|medical\s+condition|comorbid\w*|concern|condition|depress\w*|anxiety|mood|disorder|illness|symptom|co-?occurring|co-?existing|other\s+condition)\b",
+        r"(procedure|surgery|operation|treatment|intervention|goals?)|(affect(s|ed|ing)?|impact(s|ed|ing)?|interfere(s|d|ing)?(\s+with)?|prevent(s|ed|ing)?|compromise(s|d|ing))|assessed|evaluat\w*|address\w*|review\w*|consider\w*|screen\w*|(well\s*-*)?(controlled|managed)|stable|in\s+(stable\s+)?remission|controlled|managed|adequately\s+(managed|controlled)\b")],
         [re.compile(_CLIN_EXPERIENCE, re.I)])
 
 def understands_reproductive_effects(text):
@@ -480,8 +481,8 @@ def gender_identifying_characteristics_described(text):
         r"\b(identifies\s+as|gender\s+identity|affirmed\s+(male|female|gender)|presents?\s+as|gender\s+(presentation|expression)|transgender\s+(man|woman|male|female)|assigned\s+(male|female)\s+at\s+birth|AMAB|AFAB)\b",)])
 
 _DIAG_RE = [re.compile(p, re.I) for p in (
-        r"\b(diagnos\w+|assessment\s+(result|finding)s?|DSM-?5?|ICD-?10?|F\.?64|meets\s+(the\s+)?criteria)\b",
-        r"\b(gender\s+dysphoria|gender\s+incongruen\w+|F\.?64|disorder|phobia|alcohol|abuse|nicotine|schizo\w+|psych\w+|depress\w+|anxiety|PTSD|ADHD)\b")]
+        r"\b(diagnos\w+|assessment\s+(result|finding)s?|DSM-?5?|ICD-?10?|F\.?64|meets?\s+(the\s+)?criteria)",
+        r"\b(gender\s+dysphoria|gender\s+incongruen\w+|F\.?64|disorder|phobia|alcohol|abuse|nicotine|schizo\w+|psych\w+|depress\w+|anxiety|PTSD|ADHD)")]
 
 def assessment_results_with_diagnoses(text):
     return _find_all(text, _DIAG_RE, [re.compile(_CLIN_EXPERIENCE, re.I)])
