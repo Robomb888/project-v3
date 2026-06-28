@@ -17,22 +17,16 @@
       "label": "Adolescents 13-17"
     },
     {
-      "field": "emotional_cognitive_maturity_for_consent",
+      "field": "capacity_for_informed_decision",
       "type": "boolean",
       "value": true,
-      "label": "Maturity to provide informed assent"
+      "label": "Able to grant informed consent"
     },
     {
       "field": "parental_or_guardian_consent",
       "type": "boolean",
       "value": true,
       "label": "Legal guardians able to grant informed consent"
-    },
-    {
-      "field": "multidisciplinary_team_involved",
-      "type": "boolean",
-      "value": true,
-      "label": "Multidisciplinary clinical team judgment"
     }
   ],
   "extends": "_base.json"

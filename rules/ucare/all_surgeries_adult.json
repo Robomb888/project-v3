@@ -11,12 +11,6 @@
   },
   "requirements": [
     {
-      "field": "multidisciplinary_team_involved",
-      "type": "boolean",
-      "value": true,
-      "label": "Reflects MDT incl. medical + mental health"
-    },
-    {
       "field": "meets_recognized_clinical_criteria",
       "type": "boolean",
       "value": true,
@@ -32,7 +26,7 @@
       "field": "capacity_for_informed_decision",
       "type": "boolean",
       "value": true,
-      "label": "Capacity to consent"
+      "label": "Able to grant informed consent"
     },
     {
       "field": "other_causes_excluded",
@@ -47,10 +41,16 @@
       "label": "Appropriate use of hormone therapy"
     },
     {
-      "field": "comorbid_conditions_assessed",
-      "type": "boolean",
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
       "value": true,
-      "label": "Conditions affecting outcome assessed"
+      "label": "Assessment results including all diagnoses"
+    },
+    {
+      "field": "comorbid_conditions_assessed",
+      "type": "exists",
+      "value": true,
+      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
     },
     {
       "field": "understands_reproductive_effects",

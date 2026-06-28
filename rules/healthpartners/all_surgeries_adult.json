@@ -24,9 +24,15 @@
     },
     {
       "field": "comorbid_conditions_assessed",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Conditions affecting outcome assessed and addressed"
+      "label": "Mental and physical health conditions that could negatively impact the outcome have been assessed/addressed"
+    },
+    {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Assessment results including all diagnoses"
     },
     {
       "field": "understands_reproductive_effects",

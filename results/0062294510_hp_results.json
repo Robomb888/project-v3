@@ -1,0 +1,56 @@
+{
+  "file": "0062294510_hp.pdf",
+  "insurance": "healthpartners",
+  "surgery": "all",
+  "age_group": "adult",
+  "rule_file": "rules\\healthpartners\\all_surgeries_adult.json",
+  "validation": {
+    "passed": true,
+    "failed": [],
+    "errors": [],
+    "needs_review": []
+  },
+  "evaluation": [
+    {
+      "field": "gender_dysphoria_marked_and_sustained",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Gender incongruence marked and sustained"
+    },
+    {
+      "field": "other_causes_excluded",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Other causes identified and excluded"
+    },
+    {
+      "field": "comorbid_conditions_assessed",
+      "actual": "no significant mental health conditions that would negatively affect this procedure/intervention at this time.",
+      "status": "met",
+      "passed": true,
+      "reason": "Present: 'no significant mental health conditions that would negatively affect this procedure/intervention at this time.'.",
+      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
+    },
+    {
+      "field": "understands_reproductive_effects",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Understands effect on reproduction"
+    },
+    {
+      "field": "hormone_duration_months",
+      "actual": 48,
+      "status": "met",
+      "passed": true,
+      "reason": "48 >= 6.",
+      "label": "Stable on hormone therapy at least 6 months"
+    }
+  ],
+  "execution_seconds": 0.026019
+}

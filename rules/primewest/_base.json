@@ -23,9 +23,9 @@
     },
     {
       "field": "clinical_rationale_for_surgery",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Criteria met + clinical rationale"
+      "label": "Criteria met and clinical rationale described"
     },
     {
       "field": "informed_consent_obtained",
@@ -40,6 +40,12 @@
       "label": "Provider available for coordination of care"
     },
     {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Assessment results including all diagnoses"
+    },
+    {
       "field": "diagnosed_gender_dysphoria",
       "type": "boolean",
       "value": true,
@@ -47,9 +53,9 @@
     },
     {
       "field": "significant_concerns_well_controlled",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Significant concerns reasonably well controlled"
+      "label": "Other significant concerns well-controlled"
     },
     {
       "field": "no_medical_contraindications",

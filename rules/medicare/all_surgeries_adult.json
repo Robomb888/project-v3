@@ -35,10 +35,16 @@
       "label": "Clinically significant distress/impairment"
     },
     {
-      "field": "significant_concerns_well_controlled",
-      "type": "boolean",
+      "field": "comorbid_conditions_assessed",
+      "type": "exists",
       "value": true,
-      "label": "Comorbidities stable; prepared for surgery"
+      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
+    },
+    {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Assessment results including all diagnoses"
     },
     {
       "field": "months_living_as_identified_gender",

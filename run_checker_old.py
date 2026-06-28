@@ -107,7 +107,7 @@ def run_system(letter_text: str, rules) -> dict:
 
     # Only ask the LLM about fields we actually have an extractor for. The new
     # checklist fields have no extractor, and the FIELD_EXCEPTIONS abstain on
-    # purpose -- both go to human review, NOT the 4b model.
+    # purpose, both go to human review, not the 4b model.
     missing = [rules_by_field[r["field"]] for r in results
                if r["actual"] is None
                and r["field"] in FIELD_REGISTRY
@@ -172,7 +172,6 @@ def process_letter(file_path: Path, insurance: str) -> dict:
 
     return {
         "file": file_path.name,
-        #"mrn" 
         "insurance": meta.get("insurance"),
         "surgery": meta.get("surgery"),
         "age_group": meta.get("age_group"),
@@ -183,104 +182,11 @@ def process_letter(file_path: Path, insurance: str) -> dict:
     }
 
 
-def render_report_pdf(report: dict, out_path: Path) -> None:
-    """Write the review report as a PDF. The validation section is bold."""
-    from xml.sax.saxutils import escape
-    from reportlab.lib.pagesizes import letter as PAGE
-    from reportlab.lib.units import inch
-    from reportlab.lib import colors
-    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
-
-    styles = getSampleStyleSheet()
-    normal = styles["Normal"]
-    bold = ParagraphStyle("b", parent=normal, fontName="Helvetica-Bold")
-    bold_big = ParagraphStyle("bb", parent=normal, fontName="Helvetica-Bold",
-                              fontSize=13, spaceBefore=8, spaceAfter=4)
-    cell = ParagraphStyle("cell", parent=normal, fontSize=8, leading=10)
-
-    doc = SimpleDocTemplate(str(out_path), pagesize=PAGE,
-                            topMargin=0.8 * inch, bottomMargin=0.8 * inch,
-                            leftMargin=0.9 * inch, rightMargin=0.9 * inch,
-                            title="Pre-Authorization Letter Review")
-    story = [Paragraph("Letter of Support Review", styles["Title"]), Spacer(1, 6)]
-
-    for k in ("file", "insurance", "surgery", "age_group", "rule_file"):
-        if report.get(k) is not None:
-            story.append(Paragraph(f"<b>{k.replace('_', ' ').capitalize()}:</b> "
-                                   f"{escape(str(report[k]))}", normal))
-    if report.get("execution_seconds") is not None:
-        story.append(Paragraph(f"<b>Run time:</b> {report['execution_seconds']:.3f} s", normal))
-    story.append(Spacer(1, 10))
-
-    # ---- VALIDATION (bold) ----
-    val = report.get("validation")
-    if val is None:
-        story.append(Paragraph(f"VALIDATION: {(report.get('status') or 'review').upper()}", bold_big))
-        if report.get("reason"):
-            story.append(Paragraph(f"<b>{escape(report['reason'])}</b>", bold))
-    else:
-        if val.get("failed") or val.get("errors"):
-            outcome, color = "FAIL", "#b00020"
-        elif val.get("needs_review"):
-            outcome, color = "REVIEW", "#9a6700"
-        else:
-            outcome, color = "PASS", "#1a7f37"
-        story.append(Paragraph(f'VALIDATION: <font color="{color}">{outcome}</font>', bold_big))
-
-        def section(title, items):
-            story.append(Paragraph(f"<b>{title} ({len(items)})</b>", bold))
-            for it in (items or ["none"]):
-                story.append(Paragraph(f"<b>\u2022 {escape(str(it))}</b>", bold))
-            story.append(Spacer(1, 4))
-
-        section("Failed", val.get("failed", []))
-        section("Errors", val.get("errors", []))
-        section("Needs review", val.get("needs_review", []))
-
-    # ---- per-field detail (normal weight) ----
-    ev = report.get("evaluation")
-    if ev:
-        story.append(Spacer(1, 8))
-        story.append(Paragraph("Detail", styles["Heading2"]))
-        status_color = {"met": "#1a7f37", "not_met": "#b00020", "error": "#b00020",
-                        "needs_review": "#9a6700", "missing": "#666666"}
-        rows = [[Paragraph("<b>Field</b>", cell), Paragraph("<b>Status</b>", cell),
-                 Paragraph("<b>Reason</b>", cell)]]
-        for r in ev:
-            st = str(r.get("status", ""))
-            rows.append([
-                Paragraph(escape(str(r.get("field", ""))), cell),
-                Paragraph(f'<font color="{status_color.get(st, "#000000")}"><b>{st}</b></font>', cell),
-                Paragraph(escape(str(r.get("reason", ""))), cell),
-            ])
-        table = Table(rows, colWidths=[2.2 * inch, 1.0 * inch, 3.3 * inch], repeatRows=1)
-        table.setStyle(TableStyle([
-            ("VALIGN", (0, 0), (-1, -1), "TOP"),
-            ("GRID", (0, 0), (-1, -1), 0.25, colors.HexColor("#cccccc")),
-            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#eeeeee")),
-            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#f7f7f7")]),
-            ("LEFTPADDING", (0, 0), (-1, -1), 4), ("RIGHTPADDING", (0, 0), (-1, -1), 4),
-            ("TOPPADDING", (0, 0), (-1, -1), 3), ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
-        ]))
-        story.append(table)
-
-    doc.build(story)
-
-
 def write_report(file_stem: str, report: dict) -> Path:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    # machine-readable JSON (used by the eval harness / audit trail)
-    (RESULTS_DIR / f"{file_stem}_results.json").write_text(
-        json.dumps(report, indent=2), encoding="utf-8")
-    # human-readable PDF report (validation section in bold)
-    pdf_path = RESULTS_DIR / f"{file_stem}_results.pdf"
-    try:
-        render_report_pdf(report, pdf_path)
-        return pdf_path
-    except Exception as e:
-        log.warning("Could not write PDF (%s); wrote JSON only. Try: pip install reportlab", e)
-        return RESULTS_DIR / f"{file_stem}_results.json"
+    out_path = RESULTS_DIR / f"{file_stem}_results.json"
+    out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    return out_path
 
 
 # CLI

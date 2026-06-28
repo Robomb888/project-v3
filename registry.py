@@ -92,5 +92,7 @@ FIELD_REGISTRY = {
     "unequivocal_support_for_procedure": unequivocal_support_for_procedure,
 }
 
-FIELD_EXCEPTIONS = ["behavioral_health_remission_months", "hormone_duration_months", "months_living_as_identified_gender", "psychotherapy_duration_months", "clinical_relationship_duration_described"]
-    # duration fields abstain -> review on a miss, never the LLM
+FIELD_EXCEPTIONS = ["behavioral_health_remission_months", "hormone_duration_months", "months_living_as_identified_gender",
+"psychotherapy_duration_months", "clinical_relationship_duration_described", "favorable_psychosocial_behavioral_eval",
+"understands_reproductive_effects"
+]

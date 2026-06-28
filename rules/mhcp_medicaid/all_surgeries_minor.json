@@ -11,12 +11,6 @@
   },
   "requirements": [
     {
-      "field": "multidisciplinary_team_involved",
-      "type": "boolean",
-      "value": true,
-      "label": "Medical + mental health assessment"
-    },
-    {
       "field": "parental_or_guardian_consent",
       "type": "boolean",
       "value": true,

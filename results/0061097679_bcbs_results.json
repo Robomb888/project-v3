@@ -1,0 +1,56 @@
+{
+  "file": "0061097679_bcbs.pdf",
+  "insurance": "healthpartners",
+  "surgery": "all",
+  "age_group": "adult",
+  "rule_file": "rules\\healthpartners\\all_surgeries_adult.json",
+  "validation": {
+    "passed": true,
+    "failed": [],
+    "errors": [],
+    "needs_review": []
+  },
+  "evaluation": [
+    {
+      "field": "gender_dysphoria_marked_and_sustained",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Gender incongruence marked and sustained"
+    },
+    {
+      "field": "other_causes_excluded",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Other causes identified and excluded"
+    },
+    {
+      "field": "comorbid_conditions_assessed",
+      "actual": "Evitel's mental health concems that may interfere with diagnostic clarity, capacity to consent, and gender-affirming medical treatments have been addressed.",
+      "status": "met",
+      "passed": true,
+      "reason": "Present: \"Evitel's mental health concems that may interfere with diagnostic clarity, capacity to consent, and gender-affirming medical treatments have been addressed.\".",
+      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
+    },
+    {
+      "field": "understands_reproductive_effects",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Understands effect on reproduction"
+    },
+    {
+      "field": "hormone_duration_months",
+      "actual": 16,
+      "status": "met",
+      "passed": true,
+      "reason": "16 >= 6.",
+      "label": "Stable on hormone therapy at least 6 months"
+    }
+  ],
+  "execution_seconds": 0.019905
+}

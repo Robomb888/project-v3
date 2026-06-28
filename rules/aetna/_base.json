@@ -11,21 +11,27 @@
   "requirements": [
     {
       "field": "clinician_masters_degree_or_above",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
       "label": "Licensed master's degree or equivalent"
     },
     {
       "field": "comorbid_conditions_assessed",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Identifies co-existing concerns, distinguishes from GD"
+      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
+    },
+    {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Assessment results including all diagnoses"
     },
     {
       "field": "capacity_for_informed_decision",
       "type": "boolean",
       "value": true,
-      "label": "Can assess capacity to consent"
+      "label": "Able to grant informed consent"
     },
     {
       "field": "clinician_experience_in_gender_dysphoria",

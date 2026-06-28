@@ -47,21 +47,21 @@
     },
     {
       "field": "comorbid_conditions_assessed",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Conditions affecting clarity/consent evaluated and addressed"
+      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
     },
     {
       "field": "clinical_rationale_for_surgery",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Criteria met + clinical rationale described"
+      "label": "Criteria met and clinical rationale described"
     },
     {
-      "field": "emotional_cognitive_maturity_for_consent",
+      "field": "capacity_for_informed_decision",
       "type": "boolean",
       "value": true,
-      "label": "Emotional/cognitive maturity for informed consent"
+      "label": "Able to grant informed consent"
     },
     {
       "field": "irreversibility_acknowledged",

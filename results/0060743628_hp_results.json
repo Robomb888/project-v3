@@ -1,0 +1,67 @@
+{
+  "file": "0060743628_hp.pdf",
+  "insurance": "healthpartners",
+  "surgery": "all",
+  "age_group": "adult",
+  "rule_file": "rules\\healthpartners\\all_surgeries_adult.json",
+  "validation": {
+    "passed": false,
+    "failed": [],
+    "errors": [],
+    "needs_review": [
+      "understands_reproductive_effects",
+      "hormone_duration_months"
+    ]
+  },
+  "evaluation": [
+    {
+      "field": "gender_dysphoria_marked_and_sustained",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Gender incongruence marked and sustained"
+    },
+    {
+      "field": "other_causes_excluded",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Other causes identified and excluded"
+    },
+    {
+      "field": "comorbid_conditions_assessed",
+      "actual": "Mental and physical health conditions that could negatively impact the outcome have been assessed/addressed",
+      "status": "met",
+      "passed": true,
+      "reason": "Present: 'Mental and physical health conditions that could negatively impact the outcome have been assessed/addressed'.",
+      "label": "Mental and physical health conditions that could negatively impact the outcome have been assessed/addressed"
+    },
+    {
+      "field": "assessment_results_with_diagnoses",
+      "actual": "Molly currently appears to meet criteria for F64.0 Gender Dysphoria. Other possible causes of apparent gender incongruence have been identified and excluded making Gender Dysphoria the appropriate diagnosis for this client. Molly meets criteria for F34.1 Persistent Depressive Disorder; in partial remission, F42.2 ObsessiveCompulsive Disorder, and F41.1 Generalized Anxiety Disorder. ",
+      "status": "met",
+      "passed": true,
+      "reason": "Present: 'Molly currently appears to meet criteria for F64.0 Gender Dysphoria. Other possible causes of apparent gender incongruence have been identified and excluded making Gender Dysphoria the appropriate diagnosis for this client. Molly meets criteria for F34.1 Persistent Depressive Disorder; in partial remission, F42.2 ObsessiveCompulsive Disorder, and F41.1 Generalized Anxiety Disorder. '.",
+      "label": "Assessment results including all diagnoses"
+    },
+    {
+      "field": "understands_reproductive_effects",
+      "actual": null,
+      "status": "needs_review",
+      "passed": false,
+      "reason": "Field not found.",
+      "label": "Understands effect on reproduction"
+    },
+    {
+      "field": "hormone_duration_months",
+      "actual": null,
+      "status": "needs_review",
+      "passed": false,
+      "reason": "Field not found.",
+      "label": "Stable on hormone therapy at least 6 months"
+    }
+  ],
+  "execution_seconds": 20.439964
+}

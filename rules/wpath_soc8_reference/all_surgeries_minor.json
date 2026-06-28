@@ -11,12 +11,6 @@
   },
   "requirements": [
     {
-      "field": "multidisciplinary_team_involved",
-      "type": "boolean",
-      "value": true,
-      "label": "Comprehensive biopsychosocial MDT assessment"
-    },
-    {
       "field": "parental_or_guardian_consent",
       "type": "boolean",
       "value": true,
@@ -29,16 +23,22 @@
       "label": "Marked and sustained over time"
     },
     {
-      "field": "emotional_cognitive_maturity_for_consent",
+      "field": "capacity_for_informed_decision",
       "type": "boolean",
       "value": true,
-      "label": "Maturity for informed consent/assent"
+      "label": "Able to grant informed consent"
     },
     {
       "field": "understands_reproductive_effects",
       "type": "boolean",
       "value": true,
       "label": "Informed of reproductive effects"
+    },
+    {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Assessment results including all diagnoses"
     },
     {
       "field": "hormone_duration_months",

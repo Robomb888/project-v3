@@ -17,12 +17,6 @@
       "label": "Adolescents 13-17"
     },
     {
-      "field": "multidisciplinary_team_involved",
-      "type": "boolean",
-      "value": true,
-      "label": "MDT judges surgery appropriate"
-    },
-    {
       "field": "hormone_duration_months",
       "type": "min",
       "value": 12,

@@ -17,7 +17,7 @@
     },
     {
       "field": "clinician_masters_degree_or_above",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
       "label": "Master's degree or equivalent in relevant clinical field"
     },
@@ -37,7 +37,7 @@
       "field": "capacity_for_informed_decision",
       "type": "boolean",
       "value": true,
-      "label": "Capacity for a fully informed decision/consent"
+      "label": "Able to grant informed consent"
     },
     {
       "field": "favorable_psychosocial_behavioral_eval",
@@ -58,10 +58,16 @@
       "label": "Letter on official practice letterhead"
     },
     {
-      "field": "significant_concerns_well_controlled",
-      "type": "boolean",
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
       "value": true,
-      "label": "Significant concerns reasonably well controlled"
+      "label": "Assessment results including all diagnoses"
+    },
+    {
+      "field": "significant_concerns_well_controlled",
+      "type": "exists",
+      "value": true,
+      "label": "Other significant concerns well-controlled"
     }
   ]
 }

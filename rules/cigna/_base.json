@@ -19,11 +19,11 @@
       "field": "capacity_for_informed_decision",
       "type": "boolean",
       "value": true,
-      "label": "Capacity to make a fully informed decision"
+      "label": "Able to grant informed consent"
     },
     {
       "field": "significant_concerns_well_controlled",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
       "label": "Other significant concerns well-controlled"
     },
@@ -47,9 +47,9 @@
     },
     {
       "field": "clinical_rationale_for_surgery",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Rationale for hormone therapy or surgery"
+      "label": "Criteria met and clinical rationale described"
     },
     {
       "field": "medical_management_compliance",

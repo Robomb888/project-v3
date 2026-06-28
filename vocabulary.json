@@ -40,7 +40,7 @@
     "description": "Favorable psychosocial/behavioral evaluation"
   },
   "clinician_masters_degree_or_above": {
-    "type": "boolean",
+    "type": "exists",
     "extractor": "extractors.clinician_masters_degree_or_above",
     "description": "Clinician holds a master's degree or higher"
   },
@@ -90,12 +90,12 @@
     "description": "Other possible causes of gender incongruence identified and excluded"
   },
   "comorbid_conditions_assessed": {
-    "type": "boolean",
+    "type": "exists",
     "extractor": "extractors.comorbid_conditions_assessed",
     "description": "Mental/physical conditions affecting outcome assessed and addressed"
   },
   "significant_concerns_well_controlled": {
-    "type": "boolean",
+    "type": "exists",
     "extractor": "extractors.significant_concerns_well_controlled",
     "description": "Significant medical/mental health concerns reasonably well controlled"
   },
@@ -140,7 +140,7 @@
     "description": "Assessment results including all diagnoses described"
   },
   "clinical_rationale_for_surgery": {
-    "type": "boolean",
+    "type": "exists",
     "extractor": "extractors.clinical_rationale_for_surgery",
     "description": "Explanation that criteria met + clinical rationale for surgery"
   },

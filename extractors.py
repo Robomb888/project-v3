@@ -30,7 +30,12 @@ def _any_of(text, patterns):
             return True
     return None
   
-
+def _find_all(text, patterns):
+    result = ''
+    for s in sentences(text):
+        if all(p.search(s) for p in patterns):
+            result=result+(s.strip())+" "
+    return result
 
 def _first_sentence(text, good_patterns, bad_patterns=[]):
     """First sentence matching ALL patterns (for `exists` fields); else None."""
@@ -86,13 +91,13 @@ def age(text):
 
 def surgery_type(text):
     text = text.lower()
-    if any(p in text for p in ["phalloplasty", "metoidioplasty", "vaginoplasty", "bottom surgery"]):
+    if any(p in text for p in ["phalloplasty", "metoidioplasty", "vaginoplasty", "bottom surgery", "orchiectomy"]):
         return "bottom"
-    elif any(p in text for p in ["mastectomy", "top surgery", "breast reduction"]):
+    elif any(p in text for p in ["mastectomy", "top surgery", "breast reduction", "chest surgery"]):
         return "mastectomy"
     elif any(p in text for p in ["breast augmentation", "augmentation"]):
         return "breast_aug"
-    elif any(p in text for p in ["facial feminization", "facial masculinization", "facial gender-affirming surgery"]):
+    elif any(p in text for p in ["facial feminization", "facial masculinization", "facial gender-affirming surgery", "facial surgery"]):
         return "facial"
     return None
 
@@ -130,32 +135,37 @@ def understands_risks(text):
 
 
 def favorable_psychosocial_behavioral_eval(text):
-    text = text.lower()
-    if any(p in text for p in ["well controlled", "stable", "stably", "adequately managed"]):
-        return True
-    return None
+    return _both(text,
+        re.compile(r"\b(reason\w+|well|adaquat\w+|stabl\w+)\b", re.I),
+        re.compile(r"\b(control\w+|stabl\w+|managed|hous\w+)\b", re.I))
 
 
 
 # clinician original
 
-_SIGNOFF = ["sincerely,", "best regards,", "respectfully,", "sincerely yours,",
-            "best wishes,", "respectfully yours,"]
+_SIGNOFF = ["sincerely", "regards", "respectfully",
+            "best"]
 # Degrees as bounded tokens (optional periods/spaces) so a sign-off's "Dr." cannot
 # hide them and substrings inside words (e.g. "do" in "doctor") do not false match.
 _DEGREE_RE = re.compile(
     r"\b(ph\.?\s?d|psy\.?\s?d|m\.?\s?s\.?\s?w|m\.?\s?s\.?\s?n|pmhnp|ed\.?\s?d|"
-    r"d\.?\s?w\.?\s?m|m\.?\s?d|m\.?\s?a|m\.?\s?ed|m\.?\s?s|d\.?\s?o)\b", re.I)
+    r"d\.?\s?w\.?\s?m|m\.?\s?d|m\.?\s?a|m\.?\s?ed|m\.?\s?s|d\.?\s?o)", re.I)
+_LIC_RE = re.compile(
+    r"(l\.?p|lc?pc|li?csw|lgsw|lmft|lmsw|lc?mhc|cmhc|lpc?c)\b", re.I)
  
  
 def clinician_masters_degree_or_above(text):       # was clinician.extract
-    t = text.lower()
+    t = text
     # Look for a degree token in the ~120 chars AFTER each sign-off, not within the
     # same split-sentence: "Sincerely, Dr. Jane Lee, PhD" splits on "Dr." and would
     # otherwise separate the sign-off from the degree, missing it.
-    for m in re.finditer("|".join(re.escape(k) for k in _SIGNOFF), t):
-        if _DEGREE_RE.search(t[m.start(): m.start() + 120]):
-            return True
+    for m in re.finditer("|".join(re.escape(k) for k in _SIGNOFF), t, re.I):
+        deg = _DEGREE_RE.search(t[m.start(): m.start() + 120])
+        lic = _LIC_RE.search(t[m.start(): m.start() + 120])
+        if deg:
+            if lic:
+                return deg.group(1), lic.group(1)
+            return deg.group(1)
     return None
 
 
@@ -196,7 +206,7 @@ def clinician_experience_in_gender_dysphoria(text):     # was clinician.extract_
 _HRT_KEYWORDS = ("testosterone", "estrogen", "estradiol", "hormone", "hrt",
                  "masculinizing", "feminizing", "trt", "gnrh")
 _HRT_HORMONE = r"(?:testosterone|estrogen|estradiol|hormone\w*|hrt|trt|masculiniz\w*|feminiz\w*|gnrh)"
-_HRT_CUE = (r"(?:for|over|during)\s+"
+_HRT_CUE = (r"(?:for|over|during|starting)\s+"
             r"(?:the\s+|past\s+|over\s+|about\s+|approximately\s+|nearly\s+|almost\s+|"
             r"more\s+than\s+|at\s+least\s+)*")
 _HRT_NEAR = _HRT_HORMONE + r"\b[^.\n]{0,40}?" + _HRT_CUE
@@ -204,7 +214,7 @@ _HRT_YEARS = re.compile(
     _HRT_NEAR + r"(\d+)\s*(?:years?|yrs?)(?:[\s,]+(?:and\s+)?(\d+)\s*(?:months?|mos?))?", re.IGNORECASE)
 _HRT_MONTHS = re.compile(_HRT_NEAR + r"(\d+)\s*(?:months?|mos?)", re.IGNORECASE)
 _HRT_DATE = re.compile(
-    r"(?:since|started|initiated|began|commenced)\b[^.\n]{0,40}?" + _HRT_HORMONE +
+    r"(?:since|started|initiated|began|commenced|starting)\b[^.\n]{0,40}?" + _HRT_HORMONE +
     r"?[^.\d\n]{0,40}?((?:[A-Za-z]{3,9}\s+)?\d{4}|\d{1,2}[/-]\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})",
     re.IGNORECASE)
 
@@ -318,15 +328,19 @@ def other_causes_excluded(text):
         re.compile(r"\b(rule[d]?\s+out|exclud\w+|no\s+other\s+(cause|explanation)|other\s+(possible\s+)?cause|alternative\s+(cause|explanation)|differential)\b", re.I),
         re.compile(r"\b(gender|dysphoria|incongruen\w+)\b", re.I))
 
+
 def comorbid_conditions_assessed(text):
-    return _both(text,
-        re.compile(r"\b(mental\s+health|psychiatric|psychological|medical\s+condition|comorbid\w*|co-?occurring|co-?existing|other\s+condition)\b", re.I),
-        re.compile(r"\b(assess\w*|evaluat\w*|address\w*|review\w*|consider\w*|screen\w*)\b", re.I))
+    result=""
+    result +=_first_sentence(text, [re.compile(p, re.I) for p in (
+        r"\b(mental\s+health|psychiatric|psychological|medical\s+condition|comorbid\w*|co-?occurring|co-?existing|other\s+condition|concerns?|)\b",
+        r"\b(assess\w*|evaluat\w*|address\w*|review\w*|consider\w*|screen\w*)?\b",
+        r"\b(procedure|surgery|operation|treatment|intervention|goals?)?\b",
+        r"\b(affect(s|ed|ing)?|impact(s|ed|ing)?|interfere(s|d|ing)?(\s+with)?|prevent(s|ed|ing)?|compromise(s|d|ing)?)\b")])
 
 def significant_concerns_well_controlled(text):
-    return _both(text,
-        re.compile(r"\b(mental\s+health|psychiatric|medical|behavioral|comorbid\w*|concern|condition|depress\w*|anxiety|mood|disorder|illness|symptom|PTSD|bipolar|substance)\b", re.I),
-        re.compile(r"\b(well[\s-]?controlled|reasonably\s+(well\s+)?controlled|stable|in\s+(stable\s+)?remission|managed|adequately\s+(managed|controlled))\b", re.I))
+    return _first_sentence(text, [re.compile(p, re.I) for p in (
+        r"\b(mental\s+health|psychiatric|medical|behavioral|comorbid\w*|concern|condition|depress\w*|anxiety|mood|disorder|illness|symptom|PTSD|bipolar|substance)\b",
+        r"\b(well[\s-]?controlled|reasonably\s+(well\s+)?controlled|stable|in\s+(stable\s+)?remission|managed|adequately\s+(managed|controlled))\b")])
 
 def understands_reproductive_effects(text):
     return _both(text,
@@ -354,10 +368,9 @@ def diagnostic_assessment_included(text):
         re.compile(r"\b(complet\w*|includ\w*|attach\w*|perform\w*|conduct\w*|provid\w*|enclos\w*|recent)\b", re.I))
 
 def clinical_rationale_for_surgery(text):
-    #return _first_sentence(text, re.compile())
-    return _both(text,
-        re.compile(r"\b(rationale|clinical\s+reasoning|justification|recommend\w*|support\w*)\b", re.I),
-        re.compile(r"\b(surger\w*|surgical|procedure|treatment|request)\b", re.I))
+    return _find_all(text, [re.compile(p, re.I) for p in (
+        r"\b(rationale|clinical\s+reasoning|justification|recommend\w*|support\w*)\b",
+        r"\b(surger\w*|surgical|procedure|treatment|request)\b")])
 
 def irreversibility_acknowledged(text):
     return _both(text,
@@ -458,14 +471,19 @@ def clinical_relationship_duration_described(text):
         [re.compile(p, re.I) for p in (_CLIN_EXPERIENCE, _CLIN_GENDER,)])
 
 def gender_identifying_characteristics_described(text):
-    return _first_sentence(text, [re.compile(p, re.I) for p in (
+    return _find_all(text, [re.compile(p, re.I) for p in (
         r"\b(identifies\s+as|gender\s+identity|affirmed\s+(male|female|gender)|presents?\s+as|gender\s+(presentation|expression)|transgender\s+(man|woman|male|female)|assigned\s+(male|female)\s+at\s+birth|AMAB|AFAB)\b",)])
 
-def assessment_results_with_diagnoses(text): 
-    return _first_sentence(text, [re.compile(p, re.I) for p in (
-        r"\b(diagnos\w+|assessment\s+(result|finding)s?|DSM-?5?|ICD-?10?|F64|meets\s+criteria)\b",
-        r"\b(gender\s+dysphoria|gender\s+incongruen\w+|F64|disorder|depress\w+|anxiety|PTSD|ADHD)\b")],
-        
+_DIAG_RE = [re.compile(p, re.I) for p in (
+        r"\b(diagnos\w+|assessment\s+(result|finding)s?|DSM-?5?|ICD-?10?|F\.?64|meets\s+(the\s+)?criteria)\b",
+        r"\b(gender\s+dysphoria|gender\s+incongruen\w+|F\.?64|disorder|phobia|alcohol|abuse|nicotine|schizo\w+|psych\w+|depress\w+|anxiety|PTSD|ADHD)\b")]
+
+def assessment_results_with_diagnoses(text):
+    return _find_all(text, _DIAG_RE)
+
+
+def assessment_results_with_diagnoses_old(text): 
+    return _first_sentence(text, _DIAG_RE,
         [re.compile(p, re.I) for p in (
         _CLIN_EXPERIENCE,
         _CLIN_GENDER)])

@@ -22,16 +22,22 @@
       "label": "Meets diagnostic criteria; GD diagnosis affirmed"
     },
     {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Assessment results including all diagnoses"
+    },
+    {
       "field": "gender_dysphoria_marked_and_sustained",
       "type": "boolean",
       "value": true,
       "label": "Marked and sustained over time"
     },
     {
-      "field": "emotional_cognitive_maturity_for_consent",
+      "field": "capacity_for_informed_decision",
       "type": "boolean",
       "value": true,
-      "label": "Maturity for informed consent/approval"
+      "label": "Able to grant informed consent"
     },
     {
       "field": "clinical_relationship_duration_described",
@@ -41,9 +47,9 @@
     },
     {
       "field": "clinical_rationale_for_surgery",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Criteria met + clinical rationale"
+      "label": "Criteria met and clinical rationale described"
     },
     {
       "field": "informed_consent_obtained",
@@ -59,9 +65,9 @@
     },
     {
       "field": "significant_concerns_well_controlled",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Significant concerns reasonably well controlled"
+      "label": "Other significant concerns well-controlled"
     }
   ]
 }

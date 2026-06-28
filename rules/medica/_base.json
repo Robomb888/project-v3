@@ -35,9 +35,15 @@
     },
     {
       "field": "comorbid_conditions_assessed",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "No illness interfering with postoperative adherence"
+      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
+    },
+    {
+      "field": "assessment_results_with_diagnoses",
+      "type": "exists",
+      "value": true,
+      "label": "Assessment results including all diagnoses"
     },
     {
       "field": "social_transition_or_unnecessary",

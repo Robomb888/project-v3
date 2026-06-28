@@ -30,9 +30,9 @@
     },
     {
       "field": "comorbid_conditions_assessed",
-      "type": "boolean",
+      "type": "exists",
       "value": true,
-      "label": "Each evaluation addresses comorbidities"
+      "label": "Identifies co-existing concerns, distinguishes from gender dysphoria"
     },
     {
       "field": "emotional_cognitive_maturity_for_consent",

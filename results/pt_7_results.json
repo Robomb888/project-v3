@@ -1,0 +1,128 @@
+{
+  "file": "pt_7.pdf",
+  "insurance": "uhc",
+  "surgery": "bottom",
+  "age_group": "adult",
+  "rule_file": "rules\\uhc\\bottom_adult.json",
+  "validation": {
+    "passed": false,
+    "failed": [],
+    "errors": [],
+    "needs_review": [
+      "clinician_experience_in_gender_dysphoria",
+      "letter_signed",
+      "letter_on_official_letterhead",
+      "months_living_as_identified_gender"
+    ]
+  },
+  "evaluation": [
+    {
+      "field": "clinician_credentials_from_licensing_board",
+      "actual": "MN 55455",
+      "status": "met",
+      "passed": true,
+      "reason": "Present: 'MN 55455'.",
+      "label": "Documented credentials from relevant licensing board"
+    },
+    {
+      "field": "clinician_masters_degree_or_above",
+      "actual": [
+        "msw",
+        "licsw"
+      ],
+      "status": "met",
+      "passed": true,
+      "reason": "Present: ('msw', 'licsw').",
+      "label": "Master's degree or equivalent in relevant clinical field"
+    },
+    {
+      "field": "clinician_experience_in_gender_dysphoria",
+      "actual": null,
+      "status": "needs_review",
+      "passed": false,
+      "reason": "Field not found.",
+      "label": "Knowledge and experience treating GD"
+    },
+    {
+      "field": "diagnosed_gender_dysphoria",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Persistent, well-documented gender dysphoria"
+    },
+    {
+      "field": "capacity_for_informed_decision",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Able to grant informed consent"
+    },
+    {
+      "field": "favorable_psychosocial_behavioral_eval",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Favorable psychosocial-behavioral evaluation"
+    },
+    {
+      "field": "letter_signed",
+      "actual": null,
+      "status": "needs_review",
+      "passed": false,
+      "reason": "Field not found.",
+      "label": "Letter is signed"
+    },
+    {
+      "field": "letter_on_official_letterhead",
+      "actual": null,
+      "status": "needs_review",
+      "passed": false,
+      "reason": "Field not found.",
+      "label": "Letter on official practice letterhead"
+    },
+    {
+      "field": "significant_concerns_well_controlled",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Significant concerns reasonably well controlled"
+    },
+    {
+      "field": "age",
+      "actual": 25,
+      "status": "met",
+      "passed": true,
+      "reason": "25 >= 18.",
+      "label": "Bottom surgery 18+"
+    },
+    {
+      "field": "months_living_as_identified_gender",
+      "actual": null,
+      "status": "needs_review",
+      "passed": false,
+      "reason": "Field not found.",
+      "label": "12 months continuous full-time real-life involvement"
+    },
+    {
+      "field": "hormone_duration_months",
+      "actual": 84,
+      "status": "met",
+      "passed": true,
+      "reason": "84 >= 12.",
+      "label": "12 months continuous hormone therapy"
+    },
+    {
+      "field": "plan_for_follow_up",
+      "actual": true,
+      "status": "met",
+      "passed": true,
+      "reason": "Value is True, as required.",
+      "label": "Treatment plan includes ongoing follow-up and care"
+    }
+  ],
+  "execution_seconds": 9.839141
+}
