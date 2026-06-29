@@ -1,4 +1,4 @@
-# Project v3
+# LOSReader 3.0.0
 
 This is a helper program for reading letters of support.
 
