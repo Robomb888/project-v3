@@ -177,8 +177,8 @@ _CLIN_PROFESSION = (r"(?:clinical\s+)?(?:psychologist|psychiatrist|social\s+work
                     r"marriage\s+and\s+family\s+therapist|nurse\s+practitioner)")
 _CLIN_CRED = [
     re.compile(r"(licen[sc]ed\s+" + _CLIN_PROFESSION + r"(?:\s*\([^)]*\))?)", re.IGNORECASE),
-    re.compile(r"(licen[sc]e\s*(?:#|number|no\.?)?\s*[:#]?\s*[A-Z0-9-]{4,})", re.IGNORECASE),
-    re.compile(r"\b([A-Z]{2,4}\s?#?\s?[A-Z]{0,3}\s?\d{3,7})\b"),
+    re.compile(r"(licen[sc]e\s*(?:#|number|no\.?)?\s*[:#]?\s*[A-Z0-9-]{4,})", re.IGNORECASE)
+    #re.compile(r"\b([A-Z]{2,4}\s?#?\s?[A-Z]{0,3}\s?\d{3,7})\b"),
 ]
 
 
