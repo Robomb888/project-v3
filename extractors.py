@@ -67,7 +67,7 @@ def _months_near(text, anchor):
 # routing critical (original)
 def _extract_dob(text):
     patterns = [
-        r'(?:date of birth|dob)\s*[:\-]?\s*([0-9]{1,2}[/-][0-9]{1,2}[/-][0-9]{2,4})',
+        r'(?:date of birth|dob)\s*[:\-]?\s*([0-9]{1,2}[\-][0-9]{1,2}[\-][0-9]{2,4})',
         r'(?:date of birth|dob)\s*[:\-]?\s*([A-Za-z]+\s+\d{1,2},?\s+\d{4})',
         r'([A-Za-z]+\s+\d{1,2},?\s+\d{4}).*(?:date of birth|dob)'
     ]
@@ -77,6 +77,7 @@ def _extract_dob(text):
             return match.group(1)
     return None
 
+_AGE_SIGNAL = r'([0-9]{1,3}[\-]?\s?years?[\-]?\s?old)'
 
 def age(text):
     dob_text = _extract_dob(text)
@@ -87,6 +88,9 @@ def age(text):
         if (today.month, today.day) < (dob.month, dob.day):
             years -= 1
         return years
+    age_text = re.search(_AGE_SIGNAL, text, re.I)
+    if age_text is not None:
+        return int(re.search(r'(\d+)', age_text.group(1)).group(1))
     return None
 
 
@@ -190,7 +194,7 @@ def clinician_credentials_from_licensing_board(text):
     return None
 
 
-_CLIN_EXPERIENCE = (r"(?:experience|training|expertise|knowledge|specializ\w+|"
+_CLIN_EXPERIENCE = (r"(?:experienced?(?:in|with)?|training|expertise|knowledge|specializ\w+|"
                     r"competen\w+|years?\s+(?:of\s+)?(?:work|practice|treating))")
 _CLIN_GENDER = (r"(?:gender\s+dysphoria|gender[-\s]?nonconforming|transgender|"
                 r"gender[-\s]?affirming|gender\s+identity|gender\s+health|lgbtq)")
@@ -198,7 +202,7 @@ _CLIN_GENDER = (r"(?:gender\s+dysphoria|gender[-\s]?nonconforming|transgender|"
 
 def clinician_experience_in_gender_dysphoria(text):     # was clinician.extract_experience
     for sent in sentences(text):
-        if re.search(_CLIN_EXPERIENCE, sent, re.IGNORECASE) and re.search(_CLIN_GENDER, sent, re.IGNORECASE):
+        if re.search(_CLIN_EXPERIENCE, sent, re.I) and re.search(_CLIN_GENDER, sent, re.I):
             return sent.strip()
     return None
 
